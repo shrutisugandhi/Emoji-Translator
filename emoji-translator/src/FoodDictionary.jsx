@@ -85,3 +85,5 @@ const FoodApp = React.memo(() => {
   );
 });
 export default FoodApp;
+
+//used React.memo() for performance optimization as to prevent rendering UI by comparing wioth prev state to current state
