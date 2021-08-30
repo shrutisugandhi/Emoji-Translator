@@ -4,9 +4,12 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import SubjectDictionary from "./SubjectDictionary";
+import FoodApp from "./FoodDictionary";
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <hr />
+    <FoodApp />
     <hr />
     <SubjectDictionary />
   </React.StrictMode>,

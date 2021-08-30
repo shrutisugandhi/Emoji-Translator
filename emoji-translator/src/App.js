@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import "./styles.css";
 
-function App() {
+export default function App() {
   var appName = "Emoji Translator";
   //var userName="shruti";
   var size = "14px";
@@ -32,41 +31,10 @@ function App() {
       "😥": "crying",
     },
   ];
-  const FoodDictionaryArray = [
-    {
-      Gujarati: [
-        {
-          name: "Dhokla",
-        },
-        {
-          name: "daal-dhokli",
-        },
-      ],
-    },
-    {
-      Punjabi: [
-        {
-          name: "maake ki roti",
-        },
-        {
-          name: "sarso ka saag",
-        },
-      ],
-    },
-    {
-      Maharashtrian: [
-        {
-          name: "missal pav",
-        },
-        {
-          name: "thalipeeth",
-        },
-      ],
-    },
-  ];
+
   const [userInput, setuserInput] = useState(""); //useState to show change on state and have control on view layer
   const [meaning, setMeaning] = useState("");
-  const [foodSelected, setFoodSelected] = useState({});
+
   const handleTextInput = (event) => {
     // console.log("e", event.target.value);
     var usertext = event.target.value;
@@ -87,33 +55,6 @@ function App() {
     //  console.log("emoji clicked", x);
     setMeaning(emojiDictionary[x]);
   };
-  const handleCuisineSelect = (y) => {
-    console.log("y", y);
-    FoodDictionaryArray.map((items) => {
-      Object.keys(items).forEach((key) => {
-        if (y === key) {
-          console.log("keyss", key, "----value", items[key]);
-
-          var parentKey = items[key];
-
-          Object.keys(parentKey).forEach((innerKey) => {
-            console.log(
-              "parentKey",
-              parentKey,
-              "----value",
-              parentKey[innerKey].name
-            );
-            var childObjectVal = parentKey;
-            setFoodSelected(childObjectVal);
-          });
-        }
-      });
-
-      return items;
-    });
-  };
-  // console.log("meaning", meaning);
-  console.log("foodSelected", foodSelected);
   // console.log("userInput", userInput);
   return (
     <div className="App" style={{ color: "blue", fontSize: size }}>
@@ -156,44 +97,13 @@ function App() {
           );
         })}
       </ul>
-      <hr />
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        {FoodDictionaryArray.map((item) => {
-          //console.log("objectArr", item);
-          //console.log(Object.keys(item));
-          return (
-            <div style={{ display: "flex", justifyContent: "space-around" }}>
-              {Object.keys(item).map((items) => {
-                // console.log("key", items);
-                return (
-                  <div style={{ display: "flex" }}>
-                    <div onClick={() => handleCuisineSelect(items)}>
-                      {items}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 }
 
-export default App;
-
 //{}->anything inside this single curly braces is JS
 //{{}}->inner second curlybrace is trated like an object so pass values in style using object key-val pair syntax
 //style takes an object instead of string
-
-// `for...of` loop
-// for (const [key, value] of Object.entries(animals)) {
-//     console.log(`${key}: ${value}`);
-// }
-
-// // `forEach()` method
-
-// Object.entries(animals).forEach(([key, value]) => {
-//     console.log(`${key}: ${value}`)
-// });
+//This demo contain 2 scenario
+// a) searching emoji meaning using JSON object
+//b) getting emoji meaning using JSON Array of object on click on emoji
